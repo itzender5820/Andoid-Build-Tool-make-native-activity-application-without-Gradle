@@ -34,7 +34,7 @@ Result NDKBridge::probe() {
             // Use $HOME so this works in Termux, standard Linux, any environment
             const char* home = getenv("HOME");
             const std::string defaultNdk =
-                std::string(home ? home : ".") + "/asserts/android_NDK";
+                std::string(home ? home : ".") + "/assets/android-ndk";
             if (fileExists(defaultNdk)) {
                 ABT_INFO("NDK: using default path: %s", defaultNdk.c_str());
                 ndkRoot_ = defaultNdk;

@@ -104,7 +104,7 @@ Result SDKBridge::probe() {
             // Use $HOME so this works in Termux, standard Linux, any environment
             const char* home = getenv("HOME");
             const std::string defaultSdk =
-                std::string(home ? home : ".") + "/asserts/android-sdk";
+                std::string(home ? home : ".") + "/assets/android-sdk";
             if (fileExists(defaultSdk)) {
                 ABT_INFO("SDK: using default path: %s", defaultSdk.c_str());
                 sdkRoot = defaultSdk;
