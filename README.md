@@ -55,11 +55,11 @@ ABT was designed from the ground up to run comfortably inside **Termux on an And
 
 ### Required Asset Layout
 
-ABT expects the Android NDK and SDK to live inside an `asserts` folder in your `$HOME` directory. This is the default lookup path when no environment variable is set.
+ABT expects the Android NDK and SDK to live inside an `assets` folder in your `$HOME` directory. This is the default lookup path when no environment variable is set.
 
 ```
 $HOME/
-└── asserts/
+└── assets/
     ├── android_NDK/          ← Android NDK (e.g. r26c or later)
     │   ├── toolchains/
     │   │   └── llvm/
@@ -76,8 +76,6 @@ $HOME/
 ```
 
 You can override either path with environment variables (see [Environment Variables](#environment-variables)).
-
-> **Important:** The folder is named `asserts` (not `assets`). Match this exactly or set `ANDROID_NDK_HOME` / `ANDROID_SDK_ROOT` to your actual paths.
 
 ### Termux (ARM64) — Special Note on aapt2
 
@@ -264,7 +262,7 @@ ABT validates that the NDK and SDK are accessible and finds the correct compiler
 1. `ANDROID_NDK_HOME` environment variable
 2. `ANDROID_NDK` environment variable
 3. `NDK_ROOT` environment variable
-4. `$HOME/asserts/android_NDK` (the default expected location)
+4. `$HOME/assets/android_NDK` (the default expected location)
 
 The minimum sanity check is confirming that the `aarch64-linux-android<minSdk>-clang++` binary exists inside the NDK toolchain. If nothing is found, the build aborts with a clear error pointing to the missing path.
 
@@ -506,14 +504,14 @@ my-project/
 | `NDK_ROOT` | Alternative NDK root path (checked third) |
 | `ANDROID_SDK_ROOT` | Override the SDK root path |
 
-If none of these are set, ABT falls back to `$HOME/asserts/android_NDK` and `$HOME/asserts/android-sdk`.
+If none of these are set, ABT falls back to `$HOME/assets/android_NDK` and `$HOME/assets/android-sdk`.
 
 ---
 
 ## Troubleshooting
 
 **`NDK not found` error**
-Verify the NDK exists at `$HOME/asserts/android_NDK` or set `ANDROID_NDK_HOME` to the correct path. Run `abt info` to see exactly which path ABT resolved.
+Verify the NDK exists at `$HOME/assets/android_NDK` or set `ANDROID_NDK_HOME` to the correct path. Run `abt info` to see exactly which path ABT resolved.
 
 **`aapt2` fails on Termux / ARM64**
 The SDK's `aapt2` binary is x86_64 only. Install the Termux-native version: `pkg install aapt2`. Always use `--64` when running on an ARM device.
